@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Karolina Szulczyk">
+	<title>Roots Calculator</title>
+<style type="text/css">
+	html {display: flex; justify-content: center;}
+	
+	.label { size: 5px; }
+	.label :input:invalid :focus{background-color: red;}
+	.input:invalid :focus{border-color: red;}
+	.form:invalid :focus{border-color: red;}
+</style>
+</head>
+
+<script type="text/JavaScript">
+function calc() {
+  var a = parseInt(document.querySelector("#a").value);
+  var b = parseInt(document.querySelector("#b").value);
+  var c = parseInt(document.querySelector("#c").value);
+  var root = Math.sqrt(b * b - (4 * a * c));
+
+  var result1 = (-b + root) / (2 * a);
+  var result2 = (-b - root) / (2 * a);
+  if (root * root > 0) {
+    console.log(result1);
+    console.log(result2);
+    document.querySelector('#result1').innerHTML = "x = " + result1;
+    document.querySelector('#result2').innerHTML = "x = " + result2;
+  } else {
+    document.querySelector('#result1').innerHTML = "No Solution";
+    document.querySelector('#result2').innerHTML = "No Solution";
+     
+  }
+}
+function warning()
+{
+var a = parseInt(document.querySelector("#a").value);
+  var b = parseInt(document.querySelector("#b").value);
+  var c = parseInt(document.querySelector("#c").value);
+ if ([element.value == 0 && element.value >99 && element.value<-99])
+alert("localhost8950 says: \n Invalid entry for a. Must be a non-zero integer between -99 and +99. \nInvalid entry for b. Must be a non-zero integer between -99 and +99. \nInvalid entry for c. Must be a non-zero integer between -99 and +99. \n")
+}
+
+</script>
+<body>
+	<h1>Quadratic Equation Roots Calculator</h1>
+	<h3>This web page finds the roots of a polynomial equation of the following form:</h3>
+	<h3><strong><em>ax<sup>2</sup> + bx + c = 0</em></strong></h3>
+	<h3>a, b and c must be integers between -99 and +99, and a must be non-zero.</h3>
+<form>
+	<label for="a"><b>a:</b></label>
+	<input type="number" 
+			class="numbersOnly"
+			id="a" 
+			size="3" 
+			min="-99" 
+			max="99"
+			required onfocusout="validate(this);">
+	<label for="b"><b>b:</b></label>
+	<input type="number" 
+			class="numbersOnly"
+			id="b" 
+			size="3" 
+			min="-99" 
+			max="99" 
+			required onfocusout="validate(this);">
+	<label for="c"><b>c:</b></label>
+	<input type="number" 
+			class="numbersOnly"
+			id="c" 
+			size="3" 
+			min="-99" 
+			max="99" 
+			required onfocusout="validate(this);">
+</form>
+	<br>
+<button onclick="calc()">Calculate roots</button>
+<br>
+<div id="result1"></div>
+<div id="result2"></div>
+</body>
+</html>

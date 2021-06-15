@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Karolina Szulczyk">
+  <title>Story Generator</title>
+
+<style>
+.table {display: table;
+        float: left;}
+.row {display: table-row;}
+.row > * {display: table-cell;}
+.table {border-spacing: 0 3px;}
+.row > :first-child {
+        text-align: right;
+        padding-right: 10px;}
+</style>
+<script src="storyGenerator.js"></script>
+
+</head>
+
+<body>
+  <h1>Story Generator</h1>
+  <h3>Enter appropriate values in all of the text boxes. Then click the Done button to generate a story with your entered values plugged into it.</h3>
+<center>
+<form class="table" id="input">
+  <div class="row">
+      <label for="noun">noun:</label>
+      <input type="text" id="noun">
+  </div>
+  <div class="row">
+      <label for="pastTenseVerb">past tense verb:</label>
+      <input type="text" id="pastTenseVerb">
+  </div>
+  <div class="row">
+      <label for="adjective">adjective:</label>
+      <input type="text" id="adjective">
+  </div>
+  <div class="row">
+      <label for="pastTenseVerb2">past tense verb:</label>
+      <input type="text" id="pastTenseVerb2">
+  </div>
+  <div class="row">
+      <label for="adjective2">adjective:</label>
+      <input type="text" id="adjective2">
+  </div>
+  </center>
+    <br>
+
+
+
+
+  <button onclick="jumpbox()">Done</button>
+  <button onclick="clearData()">Reset</button>
+<br>
+  </center></div> 
+  
+</body>
+</html>

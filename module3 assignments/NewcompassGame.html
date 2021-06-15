@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+	<link rel="icon" href="compass.png">
+	<meta charset="utf-8">
+	<meta name="author" content="Karolina Szulczyk">
+		<title>New Compass Game</title>
+<style type="text/css">
+		table, th, td {border: none;
+						
+						color: black;
+						width: 60px;
+						height: 60px;
+						font-size: 1.5em;
+						text-align: center;}
+			#north {
+            color: red;
+            font-size: 42px;
+            padding-right: 5px;
+            text-align: center;
+            }
+        #east {
+            color: red;
+            font-size: 42px;
+            padding-bottom: 5px;
+            text-align: center;
+            }    
+        #west {
+            color: red;
+            font-size: 42px;
+            padding-top: 5px;
+            text-align: center;
+            }    
+        #south {
+            color: red;
+            font-size: 42px;
+            padding-left: 5px;
+            text-align: center;
+            }   
+		img {width: 50px;
+			height: 50px;
+			align-items: center;}
+		.diagonal {transform: rotate(55deg);}
+</style>
+<script type="text/JavaScript">
+
+	var north, east, south, west;
+function compassSwap(imgButton) 
+{
+var north, east, south, west;
+var temporaryDirection;
+if(imgButton.id == "arrowWestNorth"){
+	console.log("manipulate north and west");
+	temporaryDirection = document.getElementById("north").innerHTML;
+	document.getElementById("north").innerHTML = document.getElementById("west").innerHTML;
+	document.getElementById("west").innerHTML = temporaryDirection;
+	}
+
+if(imgButton.id == "arrowWestEast"){
+	console.log("manipulate west and east");
+	temporaryDirection = document.getElementById("west").innerHTML;
+	document.getElementById("west").innerHTML = document.getElementById("east").innerHTML;
+	document.getElementById("east").innerHTML = temporaryDirection;
+	}
+
+if(imgButton.id == "arrowSouthEast"){
+	console.log("manipulate south and west");
+	temporaryDirection = document.getElementById("south").innerHTML;
+	document.getElementById("south").innerHTML = document.getElementById("east").innerHTML;
+	document.getElementById("east").innerHTML = temporaryDirection;
+	}
+}
+function restart(actionForm) {
+	actionForm["updateBtn"].disabled = false;
+	actionForm["top"].disabled = false;
+	actionForm["left"].disabled = false;
+	actionForm["right"].disabled = false;
+	actionForm["bottom"].disabled = false;
+		document.getElementById("top").innerHTML = "";
+		document.getElementById("left").innerHTML = "";
+		document.getElementById("right").innerHTML = "";
+		document.getElementById("bottom").innerHTML = "";
+}
+function update(actionForm) {
+	console.log(actionForm);
+	document.getElementById("north").innerHTML=actionForm["top"].value;
+	document.getElementById("east").innerHTML=actionForm["right"].value;
+	document.getElementById("west").innerHTML=actionForm["left"].value;
+	document.getElementById("south").innerHTML=actionForm["bottom"].value;
+		actionform["updateBtn"].disabled = true;
+		actionform["top"].disabled = true;
+		actionform["left"].disabled = true;
+		actionform["right"].disabled = true;
+		actionform["bottom"].disabled = true;
+}
+
+
+</script>
+</head>
+<body>
+	<noscript>
+		<p>
+			"This web Page uses JavaScript. For proper results you must use a web browser with JavaScript enabled."
+		</p>
+	</noscript>
+
+	<h1>Compass Game</h1>
+		<p>
+			The direction letters on the "compass" are scrambled. Press the arrows to properly position the direction letters.
+		</p>
+<table>
+	<tr>
+		<td>
+			<img src="switch arrows.png"
+				id="arrowWestNorth" 
+				onclick="compassSwap(this);" ></td>
+		<td id="north">E</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td id="west">S</td>
+		<td> 
+			<img src="switch arrows.png" 
+				id="arrowWestEast" 
+				class="diagonal" 
+				onclick="compassSwap(this);" ></td>
+		<td id="east">W</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td id="south">N</td>
+		<td>
+			 <img src="switch arrows.png"
+				id="arrowSouthEast" 
+				onclick="compassSwap(this);" ></td>
+</table>
+		<p>
+			To restart the game, press <em>Restart</em>. enter N, S, E, and W in any order in the boxes below, and then press <em>Update</em>.
+		<br>
+		</p>
+<!-- restart button -->
+<form id="input_form">
+	<input id="restartBtn" 
+			type="Button" 
+			value="Restart" 
+			size="20"
+			onclick="restart(this.form);">
+	<br>
+	<br>
+<!-- user input -->
+			Top:
+			<input type="text1" 
+					id="top"
+					size="1" 
+					maxlength="1"
+					onkeyup="this.value = this.value.toUpperCase();"
+					disabled="true">
+			Left:
+			<input type="text2" 
+					id="left"
+					size="1" 
+					maxlength="1"
+					onkeyup="this.value = this.value.toUpperCase();"
+					disabled="true">
+			Right:
+			<input type="text3" 
+					id="right"
+					size="1" 
+					maxlength="1"
+					onkeyup="this.value = this.value.toUpperCase();"
+					disabled="true">
+			Bottom:
+			<input type="text4"
+					id="bottom" 
+					size="1" 
+					maxlength="1"
+					onkeyup="this.value = this.value.toUpperCase();"
+					disabled="true">
+		<br>
+		<br>
+<!-- update button -->
+	<input id="updateBtn" 
+		type="submit" 
+		value="Update" 
+		size="20" 
+		onclick="update(this.form);" 
+		disabled="true">
+
+</form>
+</body>
+</html>
